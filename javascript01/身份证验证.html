@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>身份证验证</title>
+		<style>
+			#labelsfz{
+				color: red;
+			}
+			#labelyouxiang{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+			<form>
+			<p>
+				<label>身份证号码:</label>
+				<input type="text" id="input1"/>
+				<label id="labelsfz"></label>
+			</p>
+			<p>
+				<label>邮箱:</label>
+				<input type="text" id="input2"/>
+				<label id="labelyouxiang"></label>
+			</p>
+			<p>
+				<button type="button" onclick="sumbits();">提交</button>
+			</p>
+			</form>
+		
+		
+		
+		<script>
+			function sumbits(){
+			var id_var=document.getElementById("input1").value;
+			var mailbox=document.getElementById("input2").value;
+			var regularid=/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+			var regularmailbox=/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+			if(regularid.test(id_var)==false){
+				document.getElementById("labelsfz").innerHTML="身份证无效";
+				return false;
+			}else{
+				document.getElementById("labelsfz").innerHTML="";
+			}
+			if(regularmailbox.test(mailbox)==false){
+				document.getElementById("labelyouxiang").innerHTML="邮箱错误";
+				return false;
+			}else{
+				document.getElementById("labelyouxiang").innerHTML="";
+			}
+			alert("登陆成功");
+			}
+			
+			
+			
+			function splitUrl(url){
+  var str=url.split("?")[1];
+  var items=str.split("&");
+  var arr={};
+  var json={};
+  for(var i =0;i<items.length;i++){
+    arr=items[i].split("=");
+    json[arr[0]]=arr[1];
+  }
+return json;
+}
+	console.log(splitUrl(location.href))
+		</script>
+	</body>
+</html>

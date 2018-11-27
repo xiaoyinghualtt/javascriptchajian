@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模板引擎</title>
+		<script type="text/javascript" src="../js/template-web.js" ></script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script id="template1">
+			<h2>姓名:{{name}}</h2>
+			{{if isshow}}
+			<ul>
+				{{each hobbies as hobby index}}
+				<li>
+					{{index+1}} {{hobby}}
+				</li>
+				{{/each}}
+			</ul>
+		{{/if}}
+		</script>
+		<script>
+			var data={
+				isshow:true,
+				name:"金泰妍",
+				hobbies:["看书","跳舞","游泳","看电影"]
+			}
+			var html=template("template1",data);
+			document.getElementById("div1").innerHTML=html;
+		</script>
+	</body>
+</html>

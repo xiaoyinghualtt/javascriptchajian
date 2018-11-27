@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象</title>
+	</head>
+	<body>
+		<script>
+			//对象字面量创建对象
+//			var o={name:"小樱花"};
+//			
+//			//通过Object创建对象
+//			var objects=new Object();
+//			objects.name="特朗普";
+//			
+//			//构造函数,类,person就是应该类型
+//			function person(name){
+//				this.name=name;
+//			}
+//			
+//			//对象 （通过构造方法创建对象）
+//			var myperson=new person("金泰妍");
+//			var okperso=new person("林允儿");
+//			console.log(myperson.name);
+//			
+//			//对象的prototype是不允许直接访问的(类型的是可以访问的)，可以使用__proto__访问
+//			console.log(myperson.prototype);
+//			console.log(myperson.__proto__);
+//			
+//			  //通过修改原型实现扩展方法，类型的prototype是可以访问的
+//			  person.prototype.show=function(){
+//			  	console.log("这是一位受人尊敬的"+this.name+";");
+//			  }
+//			  myperson.show();
+//			  okperso.show();
+//			
+//			   //在Object的原型中添加了一个out方法
+//			   Object.prototype.out=function(){
+//			   	alert(JSON.stringify(this));
+//			   }
+////			   myperson.out();
+////			   okperso.out();
+//			   "Hello".out();
+//			   Window.out();
+//			   (new Date()).out();
+//			
+//			//类型判断
+//			console.log(myperson instanceof person);
+//			console.log(myperson instanceof Object);
+
+//
+//			if(typeof Object.beget==="undefined"){
+//				Object.beget=function(proto){
+//					var F=function(){};
+//					F.prototype=proto;
+//					return new F();
+//				}
+//			}
+//			var Machine={
+//				name:"机器",
+//				show:function(){
+//					console.log("机器的名称是:"+this.name);
+//				}
+//			}
+//			var bmw=Object.beget(Machine);
+//			bmw.name="宝马";
+//			bmw.show();
+//			console.log(bmw);
+
+//			//继承
+//			var peson={weigth:"1000"};
+//			//创建一个类
+//			function student(name){
+//				this.name=name;
+//			}
+//			student.prototype=peson;
+//			var s=new student("小樱花");
+//			console.log(s.name);
+//			console.log(s.weigth)
+//			console.log(s);
+
+
+
+//		var lucy=Object.create(rose);
+//		lucy.name="lucy";
+//		var jack=Object.create(rose);
+//		jack.name="jack";
+//		rose.show=function(){
+//			console.log("姓名为:"+this.name);
+//		}
+//		lucy.show();
+//		jack.show();
+
+
+		//删除
+//		var people={name:"小樱花",age:72,show:function(){
+//			console.log("名称为:"+this.name);
+//		}};
+////		delete people.name;
+////		delete people.show();
+//		delete people.show;
+//		console.log(people.name);
+//		console.log(people.age);
+//		console.log(people.show());
+		</script>
+	</body>
+</html>

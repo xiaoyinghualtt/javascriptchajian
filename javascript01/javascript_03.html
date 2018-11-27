@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跨域</title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+	</head>
+	<body>
+		<script>
+			$.ajax({
+				type:"post",
+				url:"http://localhost:8080/pproduct/pproductselect",
+				 contentType:"application/json;charset=utf-8",
+                dataType:"json",
+				success:function(data){
+					alert(JSON.stringify(data));
+					console.log(data);
+				}
+			});
+		</script>
+	</body>
+</html>

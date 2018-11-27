@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>任务列表</title>
+		<style>
+			a {
+				margin-left: 10px;
+			}
+			
+			.label1 {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table border="1" id="table1">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checkall" /></th>
+					<th>编号</th>
+					<th>任务</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+
+			</tbody>
+		</table>
+
+		<fieldset>
+			<legend>任务列表</legend>
+			<p>
+				<label for="id">编号:</label>
+				<input type="text" id="id" name="id" />
+				<label class="label1"></label>
+			</p>
+			<p>
+				<label for="taskname">任务:</label>
+				<input type="text" id="taskname" name="taskname" />
+				<label class="label1 labeltaskname" id="labeltaskname"></label>
+			</p>
+			<p>
+				<label>状态</label>
+				<input type="radio" value="已完成" name="state" checked="checked" />已完成
+				<input type="radio" name="state" value="未完成" />未完成
+			</p>
+			<p>
+				<button type="button" id="btnadd" onclick="add();">添加</button>
+				<button type="button" id="addedit" onclick="upd()">修改</button>
+				<button type="button" id="dellist" onclick="delall();">批量删除</button>
+			</p>
+		</fieldset>
+		<script>
+			var task = [{
+					id: 101,
+					taskname: "看完http协议",
+					state: "未完成"
+				},
+				{
+					id: 102,
+					taskname: "给爸妈买衣服",
+					state: "未完成"
+				},
+				{
+					id: 103,
+					taskname: "上网买衣服",
+					state: "已完成"
+				}
+			];
+
+			window.onload = show();
+
+			function show() {
+				//输出表格内容
+				var tbody = document.getElementById("tbody");
+				tbody.innerHTML = "";
+				for(var i = 0; i < task.length; i++) {
+					var trow = getDataRow(task[i]);
+					tbody.appendChild(trow);
+				}
+				//全选与单选
+				var checkbox1 = document.getElementById("checkall");
+				var checkbox2 = document.getElementsByClassName("checkbox2");
+				checkbox1.onclick = function() {
+					for(var j = 0; j < checkbox2.length; j++) {
+						checkbox2[j].checked = this.checked;
+					}
+				}
+				for(var j = 0; j < checkbox2.length; j++) {
+					checkbox2[j].onclick = function() {
+						var ischeall = true;
+						for(var j = 0; j < checkbox2.length; j++) {
+							if(!checkbox2[j].checked) {
+								ischeall = false;
+								break;
+							}
+						}
+						checkbox1.checked = ischeall;
+					}
+				}
+			}
+
+			function getDataRow(h) {
+				var row = document.createElement("tr");
+				var quanxuancell = document.createElement("td");
+				row.appendChild(quanxuancell);
+				var btnall = document.createElement("input");
+				btnall.setAttribute("type", "checkbox");
+				btnall.setAttribute("class", "checkbox2");
+				quanxuancell.appendChild(btnall);
+				var idcell = document.createElement("td");
+				idcell.innerHTML = h.id;
+				idcell.setAttribute("class", "id");
+				row.appendChild(idcell);
+				var namecell = document.createElement("td");
+				namecell.innerHTML = h.taskname;
+				namecell.setAttribute("class", "taskname");
+				row.appendChild(namecell);
+				var statecell = document.createElement("td");
+				statecell.innerHTML = h.state;
+				statecell.setAttribute("class", "state");
+				row.appendChild(statecell);
+				//删除
+				var delcell = document.createElement("td");
+				row.appendChild(delcell);
+				var btndel = document.createElement("a");
+				btndel.setAttribute("class", "del");
+				btndel.setAttribute("href", "#")
+				btndel.innerHTML = "删除";
+				delcell.appendChild(btndel);
+				//完成
+				var btnwc = document.createElement("a");
+				btnwc.setAttribute("class", "btnawc");
+				btnwc.setAttribute("href", "#");
+				btnwc.setAttribute("data-id", h.id);
+				btnwc.setAttribute("onclick", "updstate(this)");
+				var s = "完成";
+				if(h.state == "完成") {
+					s = "未完成";
+				}
+				btnwc.text = s;
+
+				delcell.appendChild(btnwc);
+
+				//详细
+				var btndtid = document.createElement("a");
+				btndtid.setAttribute("class", "etid");
+				btndtid.setAttribute("href", "#");
+				btndtid.setAttribute("onclick", "taskedit(this);");
+				btndtid.innerHTML = "详细";
+
+				//进行删除
+				btndel.onclick = function() {
+					if(confirm("确定删除这一行吗?")) {
+						this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+					}
+				}
+				//把按钮加入到td里面
+				delcell.appendChild(btndtid);
+				return row;
+			}
+
+			function getRadioValue(state) {
+				var radios = document.getElementsByName(state);
+				var value;
+				for(var i = 0; i < radios.length; i++) {
+					if(radios[i].checked) {
+						value = radios[i].value;
+						break;
+					}
+				}
+				return value;
+			}
+
+			//批量删除
+			function delall() {
+				var tbody = document.getElementById("tbody");
+				var checkbox2 = document.getElementsByClassName("checkbox2")
+				for(var j = 0; j < checkbox2.length; j++) {
+					if(checkbox2[j].checked) {
+						var op = checkbox2[j].parentNode.parentNode;
+						tbody.removeChild(op);
+						j--;
+					}
+				}
+			}
+
+			function upd() {
+				var state_str = getRadioValue("state");
+				var id_str = document.getElementById("id").value;
+				var taskname_str = document.getElementById("taskname").value;
+				for(var i = 0; i < task.length; i++) {
+					if(task[i].id == id_str) {
+						task.splice(i, 1, {
+							id: id_str,
+							taskname: taskname_str,
+							state: state_str
+						})
+					}
+				}
+				show();
+			}
+
+			function add() {
+				var state_str = getRadioValue("state");
+				var id_str = document.getElementById("id").value;
+				var taskname_str = document.getElementById("taskname").value;
+				var reg=/^[\u4e00-\u9fa5\w-]{2,20}$/;
+				if(reg.test(taskname_str)==false){
+					document.getElementById("labeltaskname").innerHTML="任务只能是2-20位的合法字符，中文，英文，数字";
+					return false;
+				}else{
+					document.getElementById("labeltaskname").innerHTML="";
+				}
+					task.push({
+					id: id_str,
+					taskname: taskname_str,
+					state: state_str
+				});
+				show();	
+			}
+			
+			
+			function updstate(obj) {
+				var id = obj.getAttribute("data-id");
+				for(var i = 0; i < task.length; i++) {
+					if(task[i].id == id) {
+						task[i].state = obj.text;
+						if(obj.text == "完成") {
+							obj.text = "未完成";
+						} else {
+							obj.text = "完成";
+						} 
+					}
+				}
+				show();
+			}
+		</script>
+	</body>
+
+</html>

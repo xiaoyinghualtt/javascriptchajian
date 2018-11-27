@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery</title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<style>
+			#priceMap{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<button>按钮1</button>
+		<button>按钮2</button>
+		<input type="text" value="username" />
+		<input type="text" value="password" />-->
+		
+		价格:<input type="text" id="price" />
+		<span id="priceMap"></span>
+		<button>点击</button>
+		<button>点击</button>
+		<script>
+//			(function(method){
+//				method(window,window.document,jQuery);
+//			}(function(win,doc,$){
+//				console.log("这是一个私有作用域,IIFE");
+//				$.fn.yourPluginName=function(options){
+//					this.css({
+//						"color":"red",
+//						"background":"lightgreen"
+//					})
+//				}
+//			}))
+//			$("button").yourPluginName();
+//			$("button").click(function(){
+//				yourPluginName();
+//			})
+//			function valid(){
+//				var price=$("#price");
+//			var pricemsg=$("#priceMap");
+//			var val="";
+//			return (val=price.val(),isNaN(val))?(pricemsg.html("格式错误"),false):(pricemsg.html(""),true);	
+//			}
+//			$("#price").keyup(function(){
+//				console.log(valid());
+//			})
+//			function f(){
+//				var i=1;
+//				return ++i,i+=1,i+=2;
+//			}
+//			console.log(f());
+			
+//			$.fn.bgColor=function(color){
+//				this.css("background",color);
+//			}
+//			jQuery.prototype.color=function(color){
+//				this.css("color",color)
+//			}
+//			$("button,input").bgColor("lightGreen");
+//			$("button,input").color("red");
+//			$.fn.extend({
+//				display:function(){
+//					$(this).click(function(){
+//						alert($(this).val()||$(this).html());
+//					})
+//					return this;
+//				},
+//				log:function(){
+//					console.log($(this).val()||$(this).html());
+//					return this;
+//				}
+//			})
+//			$("button,input").display().log().hide(1000).show(100);
+//			
+			
+//			$.fn.extend({
+//				show:function(){
+//					$(this).click(function(){
+//						alert($(this).val()||$(this).html());
+//					})
+//				},
+//			log:function(){
+//				console.log($(this).val()||$(this).html());
+//			}
+//			})
+//			$("button").show();
+//			$("input").log();
+//			$.extend({
+//			log:function(message){
+//					console.log(message);
+//					alert(message);
+//				},
+//				a:function(mess){
+//					alert(mess);
+//			}
+//			});
+//			$.log("控制台....");
+//			$.a("金泰妍");
+//
+//			$.constructor.prototype.info=function(msg){
+//				console.log(msg);
+//				alert(msg);
+//			}
+//			$.info("这是消息");
+//			var x={a:1};
+//			var y={a:2,b:3};
+//			var s={a:4,c:5};
+//			$.extend(x,y,s);
+//			$.log(x.a+x.b+x.c);
+
+//			var o1={a:1,b:2}
+//			var o2={b:3,d:4}
+//			var o3={d:5,e:6}
+//			$.extend(o1,o2);
+//			console.log(o1);
+//			$.extend(o1,o2,o3);
+//			console.log(o1);
+			
+//			var a={n:10}
+//			var b=a;
+//			b.n=20;
+//			var c=JSON.parse(JSON.stringify(a));
+//			console.log(a.n);
+//			console.log(b.n);
+//			console.log(c.n);
+//			c.n=30;
+//			console.log(c.n);
+//			console.log(a.n);
+//			console.log(b.n);
+//			console.log(c===a);
+//			console.log(a===b);
+//			var d=$.extend(true,{},a);
+//			console.log("d.n:"+d.n);
+//			d.n=30;
+//			console.log("d.n:"+d.n);
+//			console.log("a.n:"+a.n);
+//			console.log("b.n:"+b.n);
+//			console.log(d===a);
+//			console.log(a===b);
+
+			
+		</script>
+	</body>
+</html>

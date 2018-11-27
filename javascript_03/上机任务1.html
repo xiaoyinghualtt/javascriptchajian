@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上机任务1</title>
+	</head>
+	<body>
+		<script>
+//			function dropRepeat(str){
+//				var result=[];
+//				var hash={};
+//				for (var i=0,elem;i<str.length;i++) {
+//					elem=str[i];
+//					if(!hash[elem]){
+//						hash[elem]=true;
+//						result=result+elem;
+//					}
+//				}
+//				return result;
+//			}
+//			console.log(dropRepeat("刘涛涛"));
+
+			var str = "absfsaadsadaeqdasaasdaa";
+			String.prototype.trim = function() {
+				return this.replace(/(.)(?=.*\1)/g,'');
+			};
+			console.log(str.trim());
+
+		</script>
+	</body>
+</html>

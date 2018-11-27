@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹出层</title>
+		
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<link href="../artDialog-master/css/dialog.css" />
+		<script src="../artDialog-master/dist/dialog.js"></script>
+	</head>
+	<body>
+		<button type="button" onclick="btn_alert();">点击</button>
+		<button type="button" onclick="btn_login();">消息</button>
+		<script>
+			function btn_alert(){
+				var x=dialog({
+					title:"消息",
+					content:"<h1>世界那么温柔</h1>",
+					width:"400px",
+					backdropBackground:"red",
+					backdropOpacity:"0.5",
+					modal:true,
+					okValue:"确定",
+					ok:function(){
+						var that=this;
+						setTimeout(function(){
+							that.title("提交中");
+						},1000)
+						return false;
+					},
+					cancelValue:"取消",
+					cancel:function(){
+//						alert("取消了");
+					}
+				})
+				x.show();
+				setTimeout(function(){
+					x.close().remove();
+				},2000)
+			}
+			
+			
+			function btn_login(){
+				var s=dialog({
+					modal:true
+				}).show();
+				setTimeout(function(){
+					s.close().remove();
+				},1000)
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript_02</title>
+		<style>
+			/*body,html{
+				margin: 0;
+				padding: 0;
+			}
+			.red{
+				color: red;
+				width: 200px;
+				height: 200px;
+				background: lightcoral;
+				margin-left: 100px;
+			}
+			.blue{
+				color: blue;
+			}*/
+		</style>
+	</head>
+	<body>
+		<!--<a id="a1">刷新</a>-->
+		<!--<div id="div1" class="red">
+			主席
+			<p id="p1">首相</p>
+			<p id="p2">国王</p>
+			<p id="p3">总统</p>
+		</div>
+		<input type="text" id="input1" />-->
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<script>
+//			var arra1[6]="你好";
+//			console.log(arra1[6]);
+			
+//			var click1=document.getElementById("a1");
+//			click1.onclick=function(){
+////				window.open("index.html");
+//				location.href=location.href;
+//			}
+//			var a=2;
+
+//			document.write("<br/>浏览器名称:")
+//			document.write(navigator.appCodeName);
+
+//			var a1=document.getElementById("a1");
+//			console.log(a1.nodeType);
+//			console.log(a1.nodeName);
+
+//			var div1=document.getElementById("div1");
+//			console.log(div1.firstChild);
+//			console.log(div1.firstElementChild);
+//			var clids=div1.childNodes;
+////			console.log(clids);
+//			for (var i=0;i<clids.length;i++) {
+//				console.log(clids[i]);
+//			}
+//			console.log(div1.hasChildNodes());
+//			var p1=document.getElementsByTagName("P");
+//			alert(p1.innerHTML="p标签");
+//			var ps=document.getElementsByTagName("p");
+//			console.log(ps);
+//			var div1=document.getElementById("div1");
+//			console.log(div1.classList);
+////			div1.classList.add("blue");
+//			div1.classList.toggle("blue");
+//			div1.classList.remove("blue");
+//			var div1=document.getElementById("div1");
+//			div1.style.width="500px";
+//			div1.style.backgroundColor="lightseagreen"
+
+
+//			var div1=document.getElementById("div1");
+
+
+//			var student=[{
+//				name:"小樱花",
+//				sex:"男",
+//				age:72
+//			},
+//			{
+//				name:"金泰妍",
+//				sex:"女",
+//				age:28
+//			}
+//			{
+//				name:"林允儿",
+//				sex:"女",
+//				age:27
+//			}
+//			];
+//			
+			
+//			var ul=document.createElement("ul");
+//			for (var i=0;i<student.length;i++) {
+//				var li=document.createElement("li");
+//				li.innerHTML=student[i].name;
+//			}
+
+//			var input1=document.getElementById("input1");
+//			input1.setAttribute("title","这是input标签");
+////			input1.removeAttribute("title");//移除id属性
+//			console.log(input1.getAttribute("title"))
+//			
+//			var placeho=document.createAttribute("placeholder");
+//			placeho.nodeValue="请输入你的姓名";
+//			input1.setAttributeNode(placeho);
+
+//			document.title="javascript02";
+//			console.log(document.URL);
+//			document.writeln("小樱花");
+//			document.writeln("世界");
+//			document.write(document.charset);
+
+
+//			function hellow(f1){
+//				console.log("你来自那个国家:")
+//				var name="小樱花";
+//				f1(name);
+//			}
+//			hellow(function(name){
+//				console.log("我来自中国"+"我叫"+name);
+//			})
+//			hellow(function(name){
+//				console.log("我来自美国"+"我叫"+name);
+//			})
+//			
+			
+			
+//			function handler(arr,f1){
+//				if(f1&&typeof f1==="function"){
+//					for (var i=0;i<arr.length;i++) {
+//					arr[i]=f1(arr[i]);
+//				}
+//				}
+//				else{
+//					throw "未指定参数";
+//				}
+//				return arr;
+//			}
+//			function add(n){
+//				return n + 1;
+//			}
+////			function sub(n){
+////				return n - 1;
+////			}
+//			 var result = handler([1, 2, 3], function(n) {
+//              return add(n);
+//          });
+//			console.log(result);
+//			result=handler([2,3,8],function(){})
+//			console.log(result);
+
+
+
+//			var fun=function(student){
+//				console.log(student.name);
+//				console.log(student.age);
+//			}
+//			function getStudent(){
+//				$.getJSON("student.json",function(data){
+//					if(fun){
+//						fun(data);
+//					}
+//				})
+//			}
+//			var student=getStudent(function(student){
+////				console.log(student.name);
+//			})
+
+
+//			$.getJSON("student.json").done(function(data){
+//				console.log(data);
+//			}).done(function(data){
+//				console.log(data.name);
+//			}).done(function(data){
+//				console.log(data.age);
+//			}).fail(function(xhr,status,error){
+//				console.log(xhr+status+error);
+//			}).always(function(data,textstatus){
+//				console.log(textstatus);
+//			}).then(function(data){
+//				console.log(data);
+//			})
+
+			
+	</script>
+		<script>
+//			function show(data){
+//				alert("当前时间"+data)
+//			}
+//			$.get("http://localhost:8080/admin/jspnjq",function(data){
+//				console.log(JSON.stringify(data));
+//			},"json")
+//
+//			$.post("http://localhost:8080/admin/jspnjq",function(data){
+//				console.log(data);
+//				alert(JSON.stringify(data));
+//			},"json")
+//		
+		
+//			$.ajax({
+//				type:"put",
+//				url:"http://localhost:8080/admin/jspnjq",
+//				contentType:"application/json;charset=utf-8",
+//				dataType:"json",
+//				success:function(data){
+//					console.log(data);
+//				}
+//			});
+
+		</script>
+		<!--<script src="http://localhost:8080/admin/jsops?gettime=show" type="text/javascript" charset="UTF-8"></script>-->
+	</body>
+</html>

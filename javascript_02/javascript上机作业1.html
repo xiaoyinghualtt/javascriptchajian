@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户注册</title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<style>
+			#label1{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="form1">
+		<fieldset>
+			<legend>用户注册</legend>
+			<p>
+				<label for="uiphone">输用户名</label>
+				<input type="text" id="uiphone"  placeholder="请输入用户名"/>
+				<label id="label1"></label>
+			</p>
+			<p>
+				<label for="upassword">输入密码</label>
+				<input type="password" id="upassword" placeholder="请输入密码"/>
+			</p>
+			<p>
+				<label for="upassword1">重复密码</label>
+				<input type="password" id="upassword1" placeholder="重复密码" />
+			</p>
+			<p>
+				<button type="button" id="btn1">注册</button>
+			</p>
+			<p>
+				<button type="button" id="btn2">重置</button>
+			</p>
+		</fieldset>
+		</form>
+		<script>
+			$("#btn1").click(function(){
+				var myInput = document.getElementById('uiphone');
+				if(myInput.value==''||myInput.value==""){
+					$("#label1").html("用户名不能为空")
+				}else{
+					$("#label1").html("")
+				}
+				
+				$.ajax({
+				type:"get",
+				url:"http://localhost:8080/admin/usernamepaww",
+				data:{uiphone:$("#uiphone").val(),upassword:$("#upassword").val()},
+				contentType:"application/json;charset=utf-8",
+            	dataType:"json",
+				success:function(data){
+					alert("注册成功");
+					$("body,html").css("background","green")
+				},
+				error:function(data){
+					alert("用户名一致");
+					$("body,html").css("background","red")
+				}
+			});
+				})
+			
+			
+			$("#btn2").click(function(){
+				$("#uiphone").val("");
+				$("#upassword").val("");
+				$("#upassword1").val("");
+			})
+			
+		</script>
+	</body>
+</html>

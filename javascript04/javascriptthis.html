@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this</title>
+	</head>
+	<body>
+		<!--<input type="button" value="按钮A" id="btnadd1" />
+		<input type="button" value="按钮B" id="btnadd2" onclick="show();" />-->
+		
+		<!--<input type="button" value="A" class="btn" />
+		<input type="button" value="B" class="btn" />
+		<input type="button" value="C" class="btn" />
+		<input type="button" value="D"  onclick="show();" />
+		<input type="button" value="E" id="btnE" />-->
+		
+		<input type="button" value="按钮F的值" id="btnF" />
+		<input type="button" value="按钮G的值" id="btnG" onclick="app.show();" />
+		<script>
+//			value="window的值";
+//			var app={
+//				value:"app的值",
+//				show:function(){
+//					alert(this.value);
+//				},
+//				init:function(){
+//					document.getElementById("btnF").addEventListener("click",this.show,false);
+//				}
+//			}
+//			app.show();
+//			app.init();
+//			var buttons=document.querySelectorAll(".btn");
+//			for (var i=0;i<buttons.length;i++) {
+//				buttons[i].onclick=show;
+//			}
+//			function show(){
+//				alert(this.value);
+//			}
+//			document.getElementById("btnE").addEventListener("click",show,false);
+//			function show(){
+//				alert("Hello Button");
+//				console.log(this);
+//			}
+//			document.getElementById("btnadd1").onclick=show;
+			
+//			(function(){
+//				console.log("函数表达式")
+//			})()
+
+//			var obj1={
+//				show:function(){
+//					console.log("这是有一个方法")
+//				}
+//			}
+//			obj1.show();
+
+//			function obj2(){
+//				this.show=function(){
+//					console.log("这是一个方法，是一个表达式")
+//				}
+//			}
+//			var obj3=new obj2();
+//			obj3.show();
+
+//			var i=10;
+//			i=11;
+//			console.log(i);
+//			console.log(window.i);
+//			console.log(this.i);
+//			console.log(this);
+
+
+//			var name="小樱花";
+//			console.log(this.name);
+//			
+//			function show(){
+//				console.log(this.name);
+//				return function(){
+//					console.log(this.name);
+//				}
+//			}
+//			var f1=show();
+//			f1();
+
+//			function show(){
+//				console.log(this.name);
+//			}
+//			var obj1={name:"金泰妍",view:show};
+//			obj1.view();
+//			var obj2={name:"林允儿",view:show};
+//			obj2.view();
+
+			
+//			var name="金泰妍";
+//			this.name="林允儿";
+//			console.log(name);
+//			console.log(this.name);
+//			function show(){
+//				console.log(this.name);
+//				that=this
+//				return function(){
+//					console.log(that.name);
+//				}
+//			}
+//			var obj1={name:"特朗普",view:show};
+//			obj1.view();
+//			var obj2={name:"马克龙",view:show};
+//			var f1=obj2.view();
+//			f1();
+
+
+//			this.name="波斯猫";
+//			function Cat(name){
+//				this.name=name;
+//				this.bark=function(){
+//					console.log(this.name+"在叫...");
+//				}
+//				return this.bark;
+//			}
+//			var obj1=new Cat("美国短尾猫");
+//			obj1();
+
+			
+//			this.name="火锅";
+//			function Cat(name){
+//				this.name=name;
+//			}
+//			var bark=function(n){
+//				console.log(this.name+"叫了"+(n|1)+"声");
+//			}
+//			var obj1=new Cat("波斯猫");
+//			var obj2=new Cat("美国短毛猫");
+//			bark.call(obj1,3);
+//			bark.apply(obj2,[5]);
+//			bark.apply(window,[5]);
+//			bark.apply();
+		</script>
+	</body>
+</html>

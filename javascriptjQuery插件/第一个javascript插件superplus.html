@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的第一个jQuery插件</title>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<input type="text" value="username" />
+		<input type="text" value="password" />
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="../js/jQuery_SuperPlus-1.0.js" ></script>
+		<script>
+			$("button").Superplus({length:120}).css("color","lightblue").width(60).height(60)
+			$("input").Superplus({color:"red"});
+		</script>
+	</body>
+</html>

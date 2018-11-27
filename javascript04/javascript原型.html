@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原型链</title>
+	</head>
+	<body>
+		<script>
+//			function Student(name){
+//				this.name=name;
+//			}
+//			var tom=new Student("金泰妍");
+//			tom.show=function(){
+//				console.log(this.name);
+//			}
+//			var reso=new Student("林允儿");
+//			reso.show=function(){
+//				console.log(this.name);
+//			}
+//			tom.show();
+//			reso.show();
+//
+//			function Studen(name){
+//				this.name=name;
+//				this.show=function(){
+//					console.log(this.name);
+//				}
+//			}
+//			var tom=new Studen("小樱花");
+//			var reso=new Studen("金泰妍");
+//			
+//			tom.show();
+//			reso.show();
+
+//			function Student(name){
+//				this.name=name;
+//			}
+//			Student.prototype.show=function(){
+//				console.log(this.name);
+//			}
+//			var tom=new Student("小樱花");
+//			var reso=new Student("金泰妍");
+//			tom.show();
+//			reso.show();
+
+//			var str="hello";
+//			var str2=new String("Hello");
+//			console.log(typeof(1));
+//			console.log(typeof(false))
+//			console.log(typeof str);
+//			console.log(typeof(str2));
+//			console.log(typeof([1,2,3]));
+//			console.log(typeof(Date));
+//			console.log(typeof(aaa));
+//			console.log(typeof(null));
+
+
+//			var str="hello";
+//			console.log(str instanceof String);
+//			var str1=new String("hello");
+//			console.log(str1 instanceof String);
+//			console.log(1 instanceof Number);
+//			function show(){};
+//			var f1=new show();
+//			console.log(f1 instanceof show);
+
+//
+//			function foo(a,b,c){
+//				return a*b*c;
+//			}
+//			var f1=new foo();
+//			console.log(foo.length);
+//			console.log(typeof foo.constructor);
+//			console.log(typeof foo.call);
+//			console.log(typeof foo.apply);
+//			console.log(typeof foo.prototype);
+//			console.log(typeof f1.prototype);
+
+//			function foo(){
+//				
+//			}
+//			var foo1=new foo();
+//			console.log(foo1 instanceof foo);
+//			console.log(foo1 instanceof Function);
+//			console.log(foo instanceof Function);
+			
+//			console.log(Function instanceof Function);
+//			console.log(Function instanceof Object);
+//			console.log(Object instanceof Function);
+
+
+//			function foo1(){}
+//			var foo=new foo1();
+//			console.log(foo instanceof foo1);
+//			console.log(foo instanceof Function);
+//			console.log(foo instanceof Object);
+//			console.log(foo1 instanceof Function);
+//			console.log(foo1 instanceof Object);
+
+
+//			function A(){
+//				this.x="x";
+//			}
+//			function B(){
+//				this.y="y";
+//			}
+////			B.prototype=a;
+//			var b=new B();
+//			function C(){
+//				this.z="z";
+//			}
+//			C.prototype=b;
+//			var c=new C();
+//			console.log(c instanceof C);
+//			console.log(c instanceof B);
+//			console.log(c instanceof A);
+//			console.log(c instanceof Object);
+//			console.log(B instanceof Function);
+//			console.log(c.x+","+c.y+","+c.z);
+
+
+//			var v="hi";
+//			String.prototype.rpt=function(n){
+//				n=n||2;
+//				var temp="";
+//				for (var i=0;i<n;i++) {
+//					temp+=this;
+//				}
+//				return temp;
+//			}
+//			console.log(v.rpt());
+//			console.log(v.rpt(3));
+
+
+//			String.prototype.trim=function(){
+//				return this.replace(/^\s+|\s+$/img,"");
+//			}
+//			console.log("[begin]"+" Hello javascript ".trim()+"[end]");
+
+
+
+//			Function.prototype.method=function(name,fun){
+//				if(!this.prototype[name]){
+//					this.prototype[name]=fun
+//				}
+//			}
+//			String.method("show",function(){
+//				console.log("输出:"+this);
+//			})
+//			"小樱花".show();
+//			"javascript".show();
+
+
+//			function add(x,y,z){
+//				var array1=[].slice.call(arguments,0,3);
+//				console.log(array1);
+//				var array2=Array.prototype.slice.apply(arguments,[0,3]);
+//				console.log(array2);
+//			}
+//			add(1,2,3,4,5);
+
+
+//			var str1="Hello javascript";
+//			console.log(str1.toUpperCase());
+//			var str2=String.prototype.toUpperCase.apply(str1);
+//			console.log(str2);
+//			var str3=String.prototype.toUpperCase.call(str1);
+//			console.log(str3);
+
+//			var array1=[2,3,5,7,8,9,10]
+//			var array2=array1.slice(1,6);
+//			console.log(array2);
+//			var slice=Array.prototype.slice;
+//			console.log(slice.apply(array1,[1,4]));
+//			console.log(slice.call(array1,1,4));
+
+
+//			var s={};
+//			console.log(s.prototype);
+//			console.log(s.__proto__);
+//			var b=function(){}
+//			console.log(b.prototype);
+//			console.log(b.__proto__);
+
+//
+//			function foo(name){
+//				this.name=name;
+//			}
+//			var f1=new foo("金泰妍");
+//			console.log(f1.prototype);
+//			console.log(foo.prototype);
+//			console.log(f1.__proto__);
+//			console.log(foo.__proto__);
+//			console.log(foo.__proto__===Function.prototype);
+//			console.log(foo.prototype===f1.__proto__);
+
+
+//			var o={};
+//			console.log(o.__proto__===Object.prototype);
+//			var obj=new Object();
+//			console.log(obj.__proto__===Object.prototype);
+//			var obj2=Object.create({});
+//			console.log(obj2.__proto__===Object.prototype);
+
+//
+//			var s={};
+//			console.log(s.__proto__);
+//			console.log(s.__proto__===s.constructor.prototype);
+//			var A=function(){};
+//			var a=new A();
+//			console.log(a.__proto__);
+//			console.log(a.__proto__===a.constructor.prototype);
+//			var a1={a:1};
+//			var a2=Object.create(a1);
+//			console.log(a2.__proto__);
+
+
+//			function Foo(name){
+//				this.name=name;
+//			}
+//			var foo1=new Foo("金泰妍");
+//			console.log(foo1.constructor===Foo);
+//			console.log(foo1.__proto__===Foo.prototype);
+
+//			var a={};
+//			console.log(a.__proto__===a.constructor.prototype);
+//			var A=function(){};
+//			var a=new A();
+//			console.log(a.__proto__);
+//			console.log(a.__proto__===a.constructor.prototype);
+//			console.log(a.__proto===A.prototype);
+//			var a1={a:1};
+//			var a2=Object.create(a1);
+//			console.log(a2.__proto__===a1);
+
+
+//			var A=function(){};
+//			var a=new A();
+//			console.log(a.__proto__);
+//			console.log(a.__proto__.__proto__);
+//			console.log(a.__proto__.__proto__.__proto__);
+
+//			function Foo(name){
+//				this.name=name;
+//			}
+//			var f1=new Foo("金泰妍");
+//			Foo.prototype.age=28;
+//			Foo.prototype.show=function(){
+//				console.log(this.name+this.age);
+//			}
+//			var f2=new Foo("小樱花");
+//			console.log(f1.age===f2.age);
+//			f1.show();
+//			f2.show();
+//			var A=function(){};
+//			var a=new A();
+//			console.log(a.__proto__);
+//			console.log(a.__proto__.__proto__);
+//			console.log(a.__proto__.__proto__.__proto__);
+
+//			
+//			function Person(name,age){
+//				this.name=name;
+//				this.age=age;
+//			}
+//			Person.prototype.max=999;
+//			Person.prototype.min=111;
+//			var will=new Person("金泰妍",28)
+//			console.log(will.max);
+//			console.log(will.min);
+
+			var jsons={
+				name:"金泰妍",
+				age:28,
+				show:function(){
+					console.log("姓名"+this.name+"年龄"+this.age);
+				}
+			}
+			console.log(jsons.show());
+		</script>
+	</body>
+</html>

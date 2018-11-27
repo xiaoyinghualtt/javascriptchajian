@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业2</title>
+	</head>
+	<body>
+		
+		<script>
+			var Animal={
+				name:"小狗",
+				food:"骨头",
+				eat:function(){
+					console.log(this.name+"喜欢吃"+this.food);
+				}
+			}
+			function Cat(name,food){
+				this.name=name;
+				this.food=food;
+			}
+			function Dog(name,food){
+				this.name=name;
+				this.food=food;
+			}
+			Cat.prototype=Animal;
+			Dog.prototype=Animal;
+			Cat.prototype.show=function(){
+				console.log(this.name+"喜欢吃"+this.food);
+			}
+			Dog.prototype.show=function(){
+				console.log(this.name+"喜欢吃"+this.food);
+			}
+			var cats=new Cat("波斯猫","热狗");
+			var dogs=new Dog("哈皮狗","排骨")
+			console.log(cats.show());
+			console.log(dogs.show());
+		</script>
+	</body>
+</html>

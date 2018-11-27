@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上机作业2</title>
+	</head>
+	<body>
+		<script>
+			//定义一个父类
+			function Person(){
+				
+			}
+			//定义一个学生子类
+			function Student(){
+				this.setName=function(name){
+					this.name=name;
+				}
+				this.getName=function(){
+					return this.name;
+				}
+				this.show=function(){
+					console.log(this.name+"在学习");
+				}
+			}
+			//定义一个工人子类
+			function Worker(){
+				this.setName=function(name){
+					this.name=name;
+				}
+				this.getName=function(){
+					return this.name;
+				}
+				this.show=function(){
+					console.log(this.name+"在工作");
+				}
+			}
+			//学生子类继承父类
+			Student.prototype=new Person();
+			var stu=new Student();
+			stu.setName("学生");
+			stu.show();
+			
+			//工人子类继承父类
+			Worker.prototype=new Person();
+			var wor=new Worker();
+			wor.setName("工人");
+			wor.show();
+		</script>
+	</body>
+</html>

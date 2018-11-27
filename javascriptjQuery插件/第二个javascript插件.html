@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="../js/jQuery_SuperPlus1-1.0.js" ></script>
+	</head>
+	<body>
+		<!--<button type="button">按钮A</button>
+		<button type="button">按钮B</button>-->
+		<!--<input type="text" value="金泰妍" />
+		<input type="text" value="石原里美" />-->
+		<div><button value="按钮一" type="button">按钮一</button></div>
+        <div><button value="按钮二" type="button">按钮二</button></div>
+        <div><input /></div>
+        <div><input /></div>
+        <div><input/></div>
+		<script>
+//			$("button").Supman({
+//				length:10,
+//				background:"red"
+//			});
+//			$("button").Supman({
+//				length:100,
+//				changeAfter:function(obj){
+//					if($(obj).width()>300){
+//						$(obj).width(50);
+//					}
+//				}
+//			})
+//			$("input").Supman({
+//				length:20,
+////				background:"red"
+//			})
+
+
+			$("input").Supman({
+//				width:50,
+				color:"red",
+				css:"",
+				before:function(target,setting,plus){
+					console.log("点击前");
+					console.log(target);
+					console.log(setting);
+					console.log(plus);
+				}
+			})
+		</script>
+	</body>
+</html>

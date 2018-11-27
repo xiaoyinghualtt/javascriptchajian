@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+	</head>
+	<body>
+		价格<input type="text" id="input1"/><span id="span1"></span>
+		<script>
+			var i=1;
+			i=(i+=10,i++,++i,i++);
+			console.log(i);
+			
+			function voids(){
+				var input1=$("#input1");
+				var span1=$("#span1");
+				var val="";
+			return (val=input1.val(),isNaN(val))?(span1.html('格式错误'),false):(span1.html(""),true);
+			}
+			
+			$("#input1").keyup(function(){
+				console.log(voids());
+			})
+		</script>
+	</body>
+</html>

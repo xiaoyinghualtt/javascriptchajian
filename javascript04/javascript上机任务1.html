@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上机任务1</title>
+	</head>
+	<body>
+		<script>
+			//主人类
+			var Master={
+				feeding:function(name,csl){
+					console.log("主人给"+name+"喂食了"+csl)
+				}
+			}
+			//食物
+			var Food={
+//				fin:"食物"
+			}
+			//鱼类
+			function Fish(_csl){
+				this.csl=_csl;
+			}
+			//骨头
+			function Bone(_csl){
+				this.csl=_csl;
+			}
+			//继承
+			Fish.prototype=Food;
+			Bone.prototype=Food;
+			var fis=new Fish("黄花鱼")
+			var bon=new Bone("排骨");
+			//动物
+			var Animal={
+//				dong:"动物"
+			}
+			//小猫
+			function Cat(_name){
+				this.name=_name;
+			}
+			//小狗
+			function Dog(_name){
+				this.name=_name;
+			}
+			//继承
+			Cat.prototype=Animal;
+			Dog.prototype=Animal;
+			var ca=new Cat("波斯猫");
+			var dg=new Dog("中华田园犬");
+			Master.feeding(ca.name,fis.csl);
+			Master.feeding(dg.name,bon.csl);
+		</script>
+	</body>
+</html>

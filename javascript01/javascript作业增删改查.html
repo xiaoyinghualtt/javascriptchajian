@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品信息</title>
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<link href="../artDialog-master/css/dialog.css" />
+		<script src="../artDialog-master/dist/dialog.js"></script>
+		<style>
+			a{
+				margin-left: 10px;
+			}
+			.label{
+				color: red;
+			}
+			tr:hover{
+				background: lightcoral;
+			}
+			table{
+				border: 1px solid lightblue;
+				width: 100%;
+			}
+			p{
+				text-align: center;
+			}
+			td{
+				text-align: center;
+			}
+			#fieldset1{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" id="table1" cellpadding="0" cellspacing="0">
+			<thead>
+			<tr>
+				<th><input type="checkbox" id="checkbox1" />全选</th>
+				<th>商品编号</th>
+				<td>名称</Th>
+				<th>价格</th>
+				<th>上货日期</th>
+				<th>是否下架</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody id="tbody">
+				
+			</tbody>
+		</table>
+		
+		
+		<fieldset id="fieldset">
+			<legend>商品详细</legend>
+			<p>
+				<label for="goodid">商品编号:</label>
+				<input type="text" id="goodid" name="goodid" />
+				<label class="label" id="labelgoodsid"></label>
+			</p>
+			<p>
+				<label for="goodname">商品名称:</label>
+				<input type="text" id="goodname" name="goodname" />
+				<label class="label" id="labelgoodsname"></label>
+			</p>
+			<p>
+				<label for="goodprice">商品价格:</label>
+				<input type="text" id="goodprice" name="goodprice" />
+				<label class="label" id="labelgoodsprice"></label>
+			</p>
+			<p>
+				<label for="gooddate">山货日期:</label>
+				<input type="date" id="gooddate" name="gooddate" />
+				<label class="label" id="labelgoodsdate"></label>
+			</p>
+			<p>
+				<label>是否下架</label>
+				<input type="radio" value="是" name="radio"/>是
+				<input type="radio" value="否"  name="radio" checked="checked"/>否
+			</p>
+			<p>
+				<button type="button" class="add" onclick="add();">添加</button>
+				<button type="button" class="edit" onclick="update();">修改</button>
+				<button type="button" class="deleteall" onclick="delalllist();">批量删除</button>
+			</p>
+		</fieldset>
+		
+		<!--详细-->
+		<fieldset id="fieldset1">
+			<legend>商品详细</legend>
+			<p>
+				<label for="goodid1">商品编号:</label>
+				<input type="text" id="goodid1" name="goodid" />
+				<label class="label" id="labelgoodsid"></label>
+			</p>
+			<p>
+				<label for="goodname1">商品名称:</label>
+				<input type="text" id="goodname1" name="goodname" />
+				<label class="label" id="labelgoodsname"></label>
+			</p>
+			<p>
+				<label for="goodprice1">商品价格:</label>
+				<input type="text" id="goodprice1" name="goodprice" />
+				<label class="label" id="labelgoodsprice"></label>
+			</p>
+			<p>
+				<label for="gooddate1">山货日期:</label>
+				<input type="date" id="gooddate1" name="gooddate" />
+				<label class="label" id="labelgoodsdate"></label>
+			</p>
+			<p>
+				<label>是否下架</label>
+				<input type="radio" value="是" name="radio1"/>是
+				<input type="radio" value="否"  name="radio1" checked="checked"/>否
+			</p>
+			<p>
+				<button type="button" class="add" onclick="add();">添加</button>
+				<button type="button" class="edit" onclick="update();">修改</button>
+				<button type="button" class="deleteall" onclick="delalllist();">批量删除</button>
+			</p>
+		</fieldset>
+		
+		<script>
+				
+				
+				var goods=[{
+						gid:101,
+						gname:"海尔冰箱",
+						gprice:"2019.5",
+						gdate:"2013-01-07",
+						gown:"是"
+					},
+					{
+						gid:102,
+						gname:"美的空调",
+						gprice:"3002.5",
+						gdate:"2014-01-07",
+						gown:"否"
+					},
+					{
+						gid:103,
+						gname:"格力空调",
+						gprice:"1902.5",
+						gdate:"2015-01-07",
+						gown:"否"
+					}
+					]
+				
+					document.onload=show();
+					function show(){
+						var tbody=document.getElementById("tbody");
+						tbody.innerHTML="";
+						for (var i=0;i<goods.length;i++) {
+							var goodslist=getshow(goods[i]);
+							tbody.appendChild(goodslist);
+						}
+						
+						
+						var checkbox1=document.getElementById("checkbox1");
+				var checkbox2=document.getElementsByClassName("checkbox1");
+//				var count=0;
+				checkbox1.onclick=function(){
+					for(var i=0;i<checkbox2.length;i++){
+						checkbox2[i].checked=this.checked;
+					}
+				}
+				for(var i=0;i<checkbox2.length;i++){
+					checkbox2[i].onclick=function(){
+						var ischeall=true;
+						for(var i=0;i<checkbox2.length;i++){
+							if(!checkbox2[i].checked){
+								ischeall=false;
+								break;
+							}
+						}
+						checkbox1.checked=ischeall
+					}
+				}
+					}
+				
+				
+					function getshow(h){
+						var tr=document.createElement("tr");
+						var td=document.createElement("td");
+						tr.appendChild(td);
+						var input=document.createElement("input");
+						input.setAttribute("type","checkbox");
+						input.setAttribute("class","checkbox1");
+						td.appendChild(input);
+						var tdgid=document.createElement("td");
+						tdgid.innerHTML=h.gid;
+						tr.appendChild(tdgid);
+						var tdgname=document.createElement("td");
+						tdgname.innerHTML=h.gname;
+						tr.appendChild(tdgname);
+						var tdgprice=document.createElement("td");
+						tdgprice.innerHTML=h.gprice;
+						tr.appendChild(tdgprice)
+						var tdgdate=document.createElement("td");
+						tdgdate.innerHTML=h.gdate;
+						tr.appendChild(tdgdate);
+						var tdnot=document.createElement("td");
+						tr.appendChild(tdnot);
+						var inputnot=document.createElement("input");
+						inputnot.setAttribute("class","checkbox2");
+						inputnot.setAttribute("type","checkbox");
+						inputnot.setAttribute("data_id",h.gid);
+						if(h.gown=="是"){
+							inputnot.setAttribute("checked","checked");
+						}
+						tdnot.appendChild(inputnot);
+						//删除
+						var tdoperation=document.createElement("td");
+						tr.appendChild(tdoperation);
+						var dela=document.createElement("a");
+						dela.setAttribute("href","#");
+						dela.setAttribute("class","btndel");
+						tdoperation.appendChild(dela);
+						dela.innerHTML="删除";
+						//修改
+						var edita=document.createElement("a");
+						edita.setAttribute("class","btnedit");
+						edita.setAttribute("href","#");
+						tdoperation.appendChild(edita);
+						edita.innerHTML="修改";
+						edita.onclick=function(){
+							var trs=this.parentNode.parentNode;
+							var cells=trs.cells;
+						document.getElementById("goodid").value=cells[1].innerHTML;
+						document.getElementById("goodname").value=cells[2].innerHTML;
+						document.getElementById("goodprice").value=cells[3].innerHTML;
+						document.getElementById("gooddate").value=cells[4].innerHTML;
+						}
+						
+						//详细
+						var detailed=document.createElement("a");
+						detailed.setAttribute("href","#");
+						detailed.setAttribute("class","detailed");
+						tdoperation.appendChild(detailed);
+						detailed.innerHTML="详细";
+						detailed.onclick=function(){
+							var trs1=this.parentNode.parentNode;
+							var cells=trs1.cells;
+							document.getElementById("goodid1").value=cells[1].innerHTML;
+						document.getElementById("goodname1").value=cells[2].innerHTML;
+						document.getElementById("goodprice1").value=cells[3].innerHTML;
+						document.getElementById("gooddate1").value=cells[4].innerHTML;
+							var d=dialog({
+								title:"商品详细",
+								backdropBackground:'gray',
+								modal:true,
+								backdropOpacity:0.4,
+								content:$("#fieldset1"),
+							})
+							d.show();
+						}
+						
+						//进行删除
+						dela.onclick=function(){
+							if(confirm("确定删除吗?")){
+								this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+							}
+						}
+						
+						return tr;
+					}
+					
+					//批量删除
+					function delalllist(){
+						var tbody=document.getElementById("tbody");
+						var checkbox1=document.getElementsByClassName("checkbox1");
+						for (var i=0;i<checkbox1.length;i++) {
+							if(checkbox1[i].checked){
+								var btncheckall=checkbox1[i].parentNode.parentNode;
+								tbody.removeChild(btncheckall);
+								i--;
+							}
+						}
+					}
+					
+					
+					function getRadioValue(radio) {
+					var radios = document.getElementsByName("radio");
+					var value;
+					for(var i = 0; i < radios.length; i++) {
+					if(radios[i].checked) {
+						value = radios[i].value;
+						break;
+					}
+					}
+					return value;
+					}
+					//添加
+					function add(){
+						var gid_var=document.getElementById("goodid").value;
+						var gname_var=document.getElementById("goodname").value;
+						var gprice_var=document.getElementById("goodprice").value;
+						var gooddate_var=document.getElementById("gooddate").value;
+						var goodsradio_var = getRadioValue("radio");
+						var regid=/^[0-9]{1,9}$/ig;
+						var regname=/^[0-9a-zA-Z?!_-]{1,30}$/ig;
+						var regprice=/^[1-9]\d*$/;
+						var regdate=/\S/;
+						if(regid.test(gid_var)==false){
+							document.getElementById("labelgoodsid").innerHTML="*只能输入1-9位的数字";
+							return false;
+						}else{
+							document.getElementById("labelgoodsid").innerHTML=""
+						}
+						if(regname.test(gname_var)==false){
+							document.getElementById("labelgoodsname").innerHTML="*长度只能是1-30位";
+							return false;
+						}else{
+							document.getElementById("labelgoodsname").innerHTML="";
+						}
+						if(regprice.test(gprice_var)==false){
+							document.getElementById("labelgoodsprice").innerHTML="只能输入正数,如0.98";
+							return false;
+						}else{
+							document.getElementById("labelgoodsprice").innerHTML="";
+						}
+						if(regdate.test(gooddate_var)==false){
+							document.getElementById("labelgoodsdate").innerHTML="时间必须选择";
+							return false;
+						}else{
+							document.getElementById("labelgoodsdate").innerHTML="";
+						}
+						goods.push({
+							gid:gid_var,
+							gname:gname_var,
+							gprice:gprice_var,
+							gdate:gooddate_var,
+							gown:goodsradio_var
+						})
+						show();
+					}
+					
+					
+					function update(){
+						var gid_var=document.getElementById("goodid").value;
+						var gname_var=document.getElementById("goodname").value;
+						var gprice_var=document.getElementById("goodprice").value;
+						var gooddate_var=document.getElementById("gooddate").value;
+						var goodsradio_var = getRadioValue("radio");
+						for (var i=0;i<goods.length;i++) {
+							if(goods[i].gid==gid_var){
+								goods.splice(i,1,{
+									gid:gid_var,
+							gname:gname_var,
+							gprice:gprice_var,
+							gdate:gooddate_var,
+							gown:goodsradio_var
+								})
+							}
+						}
+						show();
+					}
+					
+					
+					
+					
+		</script>
+	</body>
+</html>

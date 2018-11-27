@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<button>按钮1</button><br />
+		<button>按钮2</button><br />
+		<input type="text" value="username" /><br />
+		<input type="text" value="password" /><br />
+		<script>
+			$.fn.extend({
+				hi:function(length){
+					length=length||100;
+					$.each(this, function(index,obj) {
+				$("<span/>").html("+").css("cursor","pointer").click(function(){
+				$(obj).width($(obj).width()+length);
+				}).insertAfter(obj);
+				});
+				}
+			})
+			
+			$("button").hi();
+			$("input").hi(20);
+		</script>
+	</body>
+</html>

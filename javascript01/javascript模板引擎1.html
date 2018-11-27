@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模板引擎1</title>
+		<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="../js/template-web.js" ></script>
+	</head>
+	<body>
+		<div id="div2"></div>
+		<script id="temp1">
+			{{if isshow}}
+				<h2>{{name}}的爱好列表</h2>
+				<table width="50%" border="1">
+					<tr>
+						<th>序号</th>
+						<th>名称</th>
+						<th>操作</th>
+					</tr>
+					{{each hobbies obj i}}
+					<tr>
+						<td>{{i+1}}</td>
+						<td>{{obj}}</td>
+						<td>
+							<a href='#' data-index="{{i}}" class="del">删除</a>
+						</td>
+					</tr>
+					{{/each}}
+				</table>
+			{{/if}}
+		</script>
+		<script>
+			var data={
+				isshow:true,
+				name:"小樱花",
+				hobbies:["看书","看电影","听音乐"]
+			}
+			
+			var src=document.getElementById("temp1");
+			var html=template.render(src.innerHTML,data,{
+				escape:false
+			})
+			console.log(html);
+			document.getElementById("div2").innerHTML=html;
+		</script>
+	</body>
+</html>

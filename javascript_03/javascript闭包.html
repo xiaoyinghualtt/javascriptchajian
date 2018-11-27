@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: lightcoral;
+				float: left;
+				font-size: 14px;
+				text-align: center;
+				line-height: 100px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+		<div>10</div>
+	</body>
+	<script>
+//		var s=document.getElementsByTagName("div");
+//		for (var i=0;i<s.length;i++) {
+//			s[i].onclick=(function(n){
+//				return function(){
+//					alert(n+1);
+//				}
+//			})(i)
+//		}
+		
+		
+//		var foo=function(){
+//			var n=1;
+//			return function(){
+//				n++;
+//				console.log(n);
+//			}
+//		}
+//		var bar=foo();
+//		bar();
+//		bar();
+//		
+//		var foobar=foo();
+//		foobar();
+//		foobar();
+
+
+//		var getNum;
+//		function getcount(){
+//			var n=1;
+//			var inners=function(){
+//				return n++;
+//			}
+//			return inners;
+//		}
+//		getNum=getcount();
+//		console.log(getNum());
+//		console.log(getNum());
+
+
+//		function f1(){
+//			var n=999;
+//			nadd=function(){
+//				n+=1;
+//			}
+//			function f2(){
+//				alert(n);
+//			}
+//			return f2;
+//		}
+//		var result=f1();
+//		result();
+//		nadd();
+//		result();
+
+
+//		var name="this xiaoyinghua";
+//		var object={
+//			name:"My Object",
+//			getname:function(){
+//				return function(){
+//					return this.name;
+//				}
+//			}
+//		}
+//		alert(object.getname()());
+//		alert(object.name)
+
+//		var name="this xiaoyinghua";
+//		var object={
+//			name:"my object",
+//			getname:function(){
+//				var that=this;
+//				return function(){
+//					return that.name;
+//				}
+//			}
+//		}
+//		alert(object.getname()())
+//		alert(object.name);
+
+
+		var div1=document.getElementsByTagName("div");
+		for (var i=0;i<div1.length;i++) {
+			div1[i].onclick=(function(n){
+				return function(){
+					alert(n+1);
+				}
+			})(i)
+		}
+	</script>
+</html>
